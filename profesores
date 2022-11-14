@@ -1,0 +1,24 @@
+package proyectocolasprio;
+//@Cesar Gordillo
+
+public class Profesores {
+    String Curp;
+    String Nombre;
+    int Edad;
+    String Escuela;
+    String Nivel;
+    int Prioridad;
+    public String Sexo;
+    public boolean Embarazada;
+    public Profesores(String Curp, String Nombre, int Edad, String Escuela, String Nivel,int p) {
+        this.Curp = Curp;
+        this.Nombre = Nombre;
+        this.Edad = Edad;
+        this.Escuela = Escuela;
+        this.Nivel = Nivel;
+        this.Prioridad=p;
+    }
+        public Profesores(){
+            
+        }
+}
