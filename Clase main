@@ -1,0 +1,118 @@
+package proyectocolasprio;
+//@Cesar Gordillo
+import java.util.Scanner;
+
+public class ProyectoColasPrio {
+
+    public static void main(String[] args) {
+
+     Scanner sc=new Scanner(System.in);
+
+     int Tam;
+     System.out.println("Cuantos Profesores quiere agregar?");
+     Tam=sc.nextInt();
+     Cola elementos=new Cola(Tam);
+ 
+ 
+     
+     int opcion;
+     int i=0;
+     do
+     {
+         opcion=menu();
+         switch(opcion){
+             case 1:    //solicitar al usuario los datos 
+                     elementos.insertar(Rellenadera(i));
+                     i++;
+                      break;
+             case 2:  elementos.eliminar();
+                      break;
+             case 3:  elementos.imprimir();
+                      break;
+             case 4:  System.out.println("Gracias!");
+                      break;
+             default:
+                      break;
+         }
+     }while(opcion!=4);
+        
+
+    }
+    public static int menu(){
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Menu");
+        System.out.println("1. Insertar un elemento en la cola.");
+        System.out.println("2. Eliminar un elemento en la cola.");
+        System.out.println("3. Imprimir elementos de la cola.");
+        System.out.println("4. Salir");
+        System.out.println("Ingresa la opción:");
+        int opcion=lector.nextInt();
+        return opcion;
+    }
+    public static Profesores Rellenadera(int i){
+             Scanner lector=new Scanner(System.in);
+                    Profesores p=new Profesores();
+            int aux = 0;
+            int auxx=0;
+            System.out.println("Escribir 1 si el profesor número " + (i+1) + " es mujer o 2 en caso de ser hombre");
+            aux = lector.nextInt();
+            if (aux == 1){
+                p.Sexo = "Mujer";
+                System.out.println("En caso de que la profesora esté embarazada escribir un 1, si no un 2");
+                auxx = lector.nextInt();
+                if (auxx == 1){
+                    p.Embarazada = true;
+                }
+                else p.Embarazada = false;
+                
+            }
+            else if (aux == 2){
+                p.Sexo = "Hombre";
+            }
+            else {
+                System.out.println("Valor no acpetado, favor de verificar datos");
+                System.out.println("Escribir 1 si el profesor es mujer o 2 en caso de ser hombre");
+            }
+            System.out.println("Profesor número "+ (i+1) +". CURP:");
+            p.Curp=lector.next();
+            System.out.println("Profesor número "+ (i+1) +". Nombre:");
+            p.Nombre=lector.next();
+            System.out.println("Profesor número "+ (i+1) +". Edad:");
+            p.Edad=lector.nextInt();
+            
+          
+            System.out.println("Profesor número "+ (i+1) +". Escuela o Universidad:");
+            p.Escuela=lector.next();
+            System.out.println("Profesor número "+ (i+1) +". Nivel:");
+            p.Nivel=lector.next();
+             if (p.Edad >= 50 && p.Embarazada == true && (p.Nivel == "basico" || p.Nivel == "Basico")){
+                p.Prioridad = 6;
+            }           
+             else if (p.Edad >= 50 && p.Embarazada == true){
+                p.Prioridad = 5;
+            }
+            else if (p.Edad >= 50 && p.Nivel == "basico" || p.Nivel == "Basico" ){
+                
+                p.Prioridad= 4;
+            }
+            else if (p.Edad >= 50){
+                
+                p.Prioridad= 3;
+            }
+            else if (p.Embarazada == true ){
+                
+                p.Prioridad= 2;
+            }
+            else if (p.Embarazada == true && p.Nivel == "basico" || p.Nivel == "Basico"){
+                
+                p.Prioridad= 3;
+            }
+            else if (p.Nivel == "basico" || p.Nivel == "Basico"){
+                
+                p.Prioridad= 1;
+            }
+            return p;
+
+    } 
+
+}
